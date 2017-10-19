@@ -2,6 +2,12 @@
 [![PyPI version](https://badge.fury.io/py/cert-issuer.svg)](https://badge.fury.io/py/cert-issuer)
 
 
+    ```
+
+ git clone https://github.com/vishnu6266/block-cert-issuer.git && cd block-cert-issuer && docker build -t bc/cert-issuer:1.0 . && docker run -it  bc/cert-issuer:1.0 /bin/bash
+
+
+    ```
 # cert-issuer
 
 The cert-issuer project issues blockchain certificates by creating a transaction from the issuing institution to the

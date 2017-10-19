@@ -11,8 +11,8 @@ RUN apk add --update bash python3 python3-dev ca-certificates linux-headers gcc 
   libtool libffi-dev openssl openssl-dev gmp-dev build-base \
     && python3 -m ensurepip \
     && pip3 install --upgrade pip setuptools \
-    && mkdir -p /etc/cert-issuer/data/unsigned_certificates \
-    && mkdir /etc/cert-issuer/data/blockchain_certificates \
+ #   && mkdir -p /etc/cert-issuer/data/unsigned_certificates \
+ #   && mkdir /etc/cert-issuer/data/blockchain_certificates \
     && mkdir ~/.bitcoin \
     && echo $'rpcuser=foo\nrpcpassword=bar\nrpcport=8332\nregtest=1\nrelaypriority=0\nrpcallowip=127.0.0.1\nrpcconnect=127.0.0.1\n' > /root/.bitcoin/bitcoin.conf \
     && rm -rf /cert-issuer/cert-tools \
@@ -25,8 +25,7 @@ RUN apk add --update bash python3 python3-dev ca-certificates linux-headers gcc 
 
 ADD bitcoin-entrypoint.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/bitcoin-entrypoint.sh
-ADD generate-signed-certificates.sh /usr/local/bin
-RUN chmod +x /usr/local/bin/generate-signed-certificates.sh
+
 
 # ENTRYPOINT bitcoind -daemon && bash
 ENTRYPOINT /usr/local/bin/bitcoin-entrypoint.sh
