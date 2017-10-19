@@ -11,6 +11,7 @@ RUN apk add --update bash python3 python3-dev ca-certificates linux-headers gcc 
   libtool libffi-dev openssl openssl-dev gmp-dev build-base \
     && python3 -m ensurepip \
     && pip3 install --upgrade pip setuptools \
+    && mkdir -p /etc/data
  #   && mkdir -p /etc/cert-issuer/data/unsigned_certificates \
  #   && mkdir /etc/cert-issuer/data/blockchain_certificates \
     && mkdir ~/.bitcoin \

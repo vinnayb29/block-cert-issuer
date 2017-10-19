@@ -4,7 +4,7 @@
 
     ```
 
- git clone https://github.com/vishnu6266/block-cert-issuer.git && cd block-cert-issuer && docker build -t bc/cert-issuer:1.0 . && docker run -it  bc/cert-issuer:1.0 /bin/bash
+ git clone https://github.com/vishnu6266/block-cert-issuer.git && cd block-cert-issuer && docker build -t bc/cert-issuer:1.0 . && docker run -it  bc/cert-issuer:1.0 -v /home/ec2-user/sample_data:/etc/data /bin/bash
 
 
     ```
