@@ -23,4 +23,6 @@ bitcoin-cli sendtoaddress $issuer 5
 
 cert-issuer -c /etc/cert-issuer/conf.ini
 
-exit 0
+bash
+
+#exit 0
