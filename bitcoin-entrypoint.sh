@@ -6,7 +6,7 @@ cd /cert-tools && create-certificate-template -c  /cert-tools/conf.ini
 cd /cert-tools && instantiate-certificate-batch -c /cert-tools/conf.ini 
 
 #Start bitcoind
-bitcoind -daemon && bash
+bitcoind -daemon
 
 #Create  issuing address inside the cert-issuer container
 issuer=`bitcoin-cli getnewaddress`
@@ -23,6 +23,6 @@ bitcoin-cli sendtoaddress $issuer 5
 
 cert-issuer -c /etc/cert-issuer/conf.ini
 
-
+bash
 
 #exit 0
