@@ -25,6 +25,8 @@ RUN apk add --update bash python3 python3-dev ca-certificates linux-headers gcc 
 
 ADD bitcoin-entrypoint.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/bitcoin-entrypoint.sh
+ADD generate-signed-certificates.sh /usr/local/bin
+RUN chmod +x /usr/local/bin/generate-signed-certificates.sh
 
 # ENTRYPOINT bitcoind -daemon && bash
 ENTRYPOINT /usr/local/bin/bitcoin-entrypoint.sh
