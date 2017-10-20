@@ -4,47 +4,43 @@
 
 ## To build and run
 
-    ```
 
- git clone https://github.com/vishnu6266/block-cert-issuer.git && cd block-cert-issuer && docker build -t laur/block-cert-issuer:1.0 . && docker run -it -v /home/ec2-user/sample_data:/etc/data  laur/block-cert-issuer:1.0 /bin/bash
+      git clone https://github.com/vishnu6266/block-cert-issuer.git && cd block-cert-issuer && docker build -t laur/block-cert-issuer:1.0 . && docker run -it -v /home/ec2-user/sample_data:/etc/data  laur/block-cert-issuer:1.0 /bin/bash
 
 
 ## To build the docker image
 
-    ```
-
- git clone https://github.com/vishnu6266/block-cert-issuer.git && cd block-cert-issuer && docker build -t laur/block-cert-issuer:1.0 . 
-
-    ```
+      git clone https://github.com/vishnu6266/block-cert-issuer.git && cd block-cert-issuer && docker build -t laur/block-cert-issuer:1.0 . 
 
 ## To push the container to aws registry
 
-aws configure
 
-aws ecr get-login --no-include-email --region us-east-1
+     aws configure
 
-docker build -t laur/block-cert-issuer:1.0 . 
+     aws ecr get-login --no-include-email --region us-east-1
 
-docker tag laur/block-cert-issuer:1.0 <id>.amazonaws.com/laur/block-cert-issuer:1.0
+     docker build -t laur/block-cert-issuer:1.0 . 
 
-docker push <id>.dkr.ecr.us-east-1.amazonaws.com/laur/block-cert-issuer:1.0
+     docker tag laur/block-cert-issuer:1.0 <id>.amazonaws.com/laur/block-cert-issuer:1.0
+
+     docker push <hostname>/laur/block-cert-issuer:1.0
 
 
 ## To run the container in EC2
 
-Uoload sample_data folder to S3
+     Upload sample_data folder to S3
 
-aws configure
+     aws configure
 
-aws ecr get-login --no-include-email --region us-east-1
+     aws ecr get-login --no-include-email --region us-east-1
 
-docker push <id>.dkr.ecr.us-east-1.amazonaws.com/laur/block-cert-issuer:1.0
+     docker push <hostname>/laur/block-cert-issuer:1.0
 
-Copy aws/execute.sh file to EC2 instance
+     Copy aws/execute.sh file to EC2 instance
 
-Run execute.sh 
+     Run execute.sh 
 
-Blockchain certs will be available in s3://<bucketname>/test/sample_data/blockchain_certificates
+     Blockchain certs will be available in s3://<bucketname>/test/sample_data/blockchain_certificates
 
 
 
