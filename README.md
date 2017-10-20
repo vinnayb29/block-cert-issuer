@@ -2,12 +2,52 @@
 [![PyPI version](https://badge.fury.io/py/cert-issuer.svg)](https://badge.fury.io/py/cert-issuer)
 
 
-    ```
-
- git clone https://github.com/vishnu6266/block-cert-issuer.git && cd block-cert-issuer && docker build -t bc/cert-issuer:1.0 . && docker run -it  bc/cert-issuer:1.0 -v /home/ec2-user/sample_data:/etc/data /bin/bash
-
+## To build and run
 
     ```
+
+ git clone https://github.com/vishnu6266/block-cert-issuer.git && cd block-cert-issuer && docker build -t laur/block-cert-issuer:1.0 . && docker run -it -v /home/ec2-user/sample_data:/etc/data  laur/block-cert-issuer:1.0 /bin/bash
+
+
+## To build the docker image
+
+    ```
+
+ git clone https://github.com/vishnu6266/block-cert-issuer.git && cd block-cert-issuer && docker build -t laur/block-cert-issuer:1.0 . 
+
+    ```
+
+## To push the container to aws registry
+
+aws configure
+
+aws ecr get-login --no-include-email --region us-east-1
+
+docker build -t laur/block-cert-issuer:1.0 . 
+
+docker tag laur/block-cert-issuer:1.0 <id>.amazonaws.com/laur/block-cert-issuer:1.0
+
+docker push <id>.dkr.ecr.us-east-1.amazonaws.com/laur/block-cert-issuer:1.0
+
+
+## To run the container in EC2
+
+Uoload sample_data folder to S3
+
+aws configure
+
+aws ecr get-login --no-include-email --region us-east-1
+
+docker push <id>.dkr.ecr.us-east-1.amazonaws.com/laur/block-cert-issuer:1.0
+
+Copy aws/execute.sh file to EC2 instance
+
+Run execute.sh 
+
+Blockchain certs will be available in s3://<bucketname>/test/sample_data/blockchain_certificates
+
+
+
 # cert-issuer
 
 The cert-issuer project issues blockchain certificates by creating a transaction from the issuing institution to the
